@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker</title>
+</head>
+<body>
+<h1>Docker Cheatsheet</h1>
+<h2>Install (easy but not secure)</h2>
+<p>curl -fsSL https://get.docker.com -o get-docker.sh</p>
+<p>sudo sh get-docker.sh</p>
+<p>sudo docker version</p>
+
+<h2>Test</h2>
+<p>sudo docker run docker/whalesay cowsay HELLO</p>
+
+<h2>Commands</h2>
+<p><em>commands will require sudo if the user is not in the docker group</em></p>
+<p><b>run</b> - runs image or downloads and runs image (<b>docker run &lt;image&gt;</b>), -d command run in dettach mode returns id (use this if you want to use this terminal)</p>
+
+<p><b>attach</b> - use this to attach terminal to container if <b>docker run -d &lt;image&gt;</b> was used (<b>docker attach &lt;id&gt;</b>, you can use first few characters if they are unique from other ids)</p>
+<p><b>ps</b> - list of running containers (<b>docker ps</b>), -a option list even the ones not running (ps -a). (NOTE: containers not images!!!)</p>
+<p><b>stop</b> - stops running container (<b>docker stop &lt;name&gt;</b>, where name is the field from docker ps)</p>
+<p><b>rm</b> - remove perminatly container (<b>docker rm &lt;name&gt;</b>)</p>
+<p><b>images</b> - list of images (<b>docker images</b>)</p>
+<p><b>rmi</b> - remove image (<b>docker rmi &lt;repository&gt;</b>, where repository is the field from <b>docker images</b>)</p>
+<p><b>pull</b> - only download (not run) image (<b>docker pull &lt;image&gt;</b>)</p>
+<p><b>exec</b> - execute a command in a container (<b>docker exec &lt;name&gt; &lt;command&gt;</b>)</p>
+
+<h2>Examples</h2>
+<p>docker run docker/whalesay cowsay HELLO</p>
+<p>docker run -d --name=whale docker/whalesay sleep 100</p>
+<p>docker ps</p>
+<p>docker stop whale</p>
+<p>docker start whale</p>
+<p>docker exec whale cowsay hello</p>
+<p>docker ps -a</p>
+</body>
+</html>
